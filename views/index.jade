@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+  nav.navbar.navbar-expand-lg.navbar-light.bg-light
+    ul.navbar-nav.mr-auto
+      li.nav-item.active
+        a.nav-link(href= "/currency") Currencies
+      li.nav-item.active
+        a.nav-link(href= "/exchange/submit") exchange dollars
+      li.nav-item.active
+        a.nav-link(href= "/users/create") Register
+      li.nav-item.active
+        a.nav-link(href= "/users/login") Login
+      li.nav-item.active
+        a.nav-link(href= "/users/dashboard") Dashboard
+      li.nav-item.active
+        a.nav-link(href= "/astronautstable") View Astronaut Names
+      
+

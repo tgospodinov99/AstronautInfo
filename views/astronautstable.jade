@@ -1,0 +1,22 @@
+extends layout 
+
+block content
+    form(action= '/astronautstable', method= 'GET')
+                p
+                    | Year 
+                    input(type= 'number', name= 'year', value='')
+                input(class= 'btn', type= 'submit', value= 'filter')
+                a.btn(href= "/addastronaut") Add New Astronaut
+    -const headers = ["ID", "Name", "Year", "Gender"]
+    table.table.table-dark.table-bordered
+        thead.bg-primary
+            tr
+                -for(let i = 0; i < headers.length; i++){
+                    td.bg-primary= headers[i]
+                -}
+        tbody 
+            each val in fullInfo 
+                tr
+                each info in val
+                    td= info
+    

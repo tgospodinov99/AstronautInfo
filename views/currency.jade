@@ -1,0 +1,43 @@
+extends layout
+
+block content
+    h1 Euro converted to world currencies
+    a(href= "/") back to main
+    div
+        table.table.table-dark.table-bordered
+            thead.thead-dark
+            -var i = 0
+                tr 
+                    each val, index in rates
+                        -i++
+                        td= index
+                        td= val
+                        -if(i % 10 == 0){
+                            tr
+                        -}
+            tbody
+                
+                      
+
+
+//block content 
+    ul
+        each val, index in rates 
+            li= index + ' : ' + val
+            
+            
+//block content
+    h1 Euro converted to world currencies
+    a(href= "/") back to main
+    div
+        table
+            thead
+                tr 
+                - var i = 0
+                    each val, index in rates
+                        td= index
+            tbody
+                tr
+                    tr
+                        each val in rates
+                            td= val

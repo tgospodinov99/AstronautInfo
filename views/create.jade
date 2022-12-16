@@ -1,0 +1,19 @@
+extends layout
+
+block content 
+    h1.text-primary Register
+    form(action= '/users/create/', method= 'POST')
+        .form-row
+            .font-weight-normal Username 
+            .col-7
+                input.form-control(type= 'text', name= 'username', value='')
+            | Email 
+            .col-7
+                input.form-control(type= 'email', name= 'email', value='')
+            | Password 
+            .col-7
+                input.form-control(type= 'password', name= 'password', value='')
+        .btn-group-vertical
+            input.btn.btn-primary(type= 'submit', value= 'register')
+            a.btn(href= "/users/login") Log In
+            a.btn(href= "/") Back To Main Page

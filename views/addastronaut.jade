@@ -1,0 +1,20 @@
+extends layout
+
+block content 
+    h1.text-primary Add A New Astronaut
+    form(action= '/addastronaut', method= 'POST')
+        .form-row
+            .font-weight-normal Full Name
+            .col-7
+                input.form-control(type= 'text', name= 'name', value='')
+            | Year
+            .col-7
+                input.form-control(type= 'number', name= 'year', value='')
+            .form-check.form-check-inline
+                input#inlineRadio1.form-check-input(type='radio' name='gender' value='F')
+                label.form-check-label(for='inlineRadio1') F
+            .form-check.form-check-inline
+                input#inlineRadio2.form-check-input(type='radio' name='gender' value='M')
+                label.form-check-label(for='inlineRadio2') M
+        .btn-group-vertical
+            input.btn.btn-primary(type= 'submit', value= 'Add')

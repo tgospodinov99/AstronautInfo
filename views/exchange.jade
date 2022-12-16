@@ -1,0 +1,11 @@
+extends layout
+
+block content 
+    h1 How much $ do you want to convert to euro
+        form(action= '/exchange/submit', method= 'POST')
+            p 
+                | dollars:
+                input(type='number', name='dollars', value='')
+            input(class= 'btn',type='submit', value='Exchange')
+     - var exchanged = output * USD
+    h1 exchanged: #{exchanged}

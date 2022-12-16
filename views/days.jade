@@ -1,0 +1,35 @@
+extends layout
+
+//block content 
+    ul
+        each val in daysObj 
+            li= val
+
+
+block content
+    - const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+    div
+        table
+            thead
+                tr 
+                    -for(let i = 0; i < days.length; i++){
+                        td= days[i]
+                    -}
+            tbody
+                tr
+                - var currentDay = 0;
+                - for(let i = 0; i < days.length; i++){
+                    -if(daysObj[1] == days[i]){
+                        -currentDay = i;
+                    -}
+                -}
+                -var i = 1
+                while i <= Object.keys(daysObj).length
+                    tr
+                        -var j = 1
+                        while j <= 7
+                            -i++
+                            -j++
+                            -if (daysObj[i-1] != undefined && i - 1 - currentDay >= 0)
+                                td= i - 1
+

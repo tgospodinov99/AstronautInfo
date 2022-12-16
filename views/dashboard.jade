@@ -1,0 +1,7 @@
+extends layout 
+
+block content
+    h1 you can see this page only if you're logged in. Welcome, #{username}
+        form(action= '/users/logout', method= 'POST')
+            input.btn.btn-primary(type= 'submit', value= 'Logout')
+            a.btn(href= '/') Back To Main Page

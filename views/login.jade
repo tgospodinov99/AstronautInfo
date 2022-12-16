@@ -1,0 +1,15 @@
+extends layout
+
+block content 
+    h1.text-primary Log In
+    form(action= '/users/login', method= 'POST')
+        .form-row
+            | Email 
+            .col-7
+                input.form-control(type= 'email', name= 'email', value='')
+            | Password 
+            .col-7
+                input.form-control(type= 'password', name= 'password', value='')
+        .btn-group-vertical
+            input.btn.btn-primary(type= 'submit', value= 'Log In')
+            a.btn(href= "/") Back To Main Page
