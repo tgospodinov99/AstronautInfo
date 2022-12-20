@@ -4,16 +4,17 @@ const db = require("../database/sequelize");
 const bcrypt = require('bcryptjs');
 const session = require('express-session');
 const user = db.users;
+const isAuth = require('../auth/userauth');
 
 /* GET users listing. */
 
-const isAuth = (req, res, next) => {
+/*const isAuth = (req, res, next) => {
   if(req.session.isAuth){
     next();
   } else {
     res.redirect('/users/login');
   }
-}
+}*/
 
 router.get('/', function(req, res, next) {
   res.send('respond with a resource');

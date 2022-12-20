@@ -4,6 +4,8 @@ var router = express.Router();
 //import fetch from 'node-fetch';
 const fetch = require('node-fetch');
 const mysql = require('mysql2');
+const isAuth = require('../auth/userauth');
+
 
 const connection = mysql.createConnection({
     host: 'localhost',
@@ -133,7 +135,7 @@ router.get('/astronautstable', (req, res, next) => {
   });
 });
 
-router.get('/addastronaut', (req, res, next) => {
+router.get('/addastronaut', isAuth, (req, res, next) => {
   res.render('addastronaut');
 });
 
