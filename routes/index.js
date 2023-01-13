@@ -65,7 +65,7 @@ const firstDayCurrentMonth = getFirstDayOfMonth(currentYear, currentMonth);
 const daysInCurrentMonth = getDaysInMonth(currentYear, currentMonth);
 const daysObj = daysToObj(daysInCurrentMonth, days, firstDayCurrentMonth);
 const valuesInObj = Object.values(daysObj);
-//const currJson = await currencyAPI
+
 
 
 /* GET home page. */
@@ -85,8 +85,6 @@ router.get('/days', (req, res, next) => {
 router.get('/currency', async (req, res, next) => {
   const result = await currencyAPI();
   const rates = result.rates;
-  //const JSONstr = JSON.stringify(rates);
-  //const JSONstr = JSON.parse(await result);
   res.render('currency', {rates});
 });
 
@@ -108,7 +106,6 @@ router.get('/astronauts', (req, res, next) => {
     if (err) throw err;
     connection.query("SELECT Name FROM astronauts", function (err, result, fields) {
       if (err) throw err;
-      //console.log(result);
       astronautNames = {names: result.map((e) => e.Name)};
       res.render('astronauts', {names: astronautNames.names});
     });
@@ -118,7 +115,6 @@ router.get('/astronauts', (req, res, next) => {
 router.get('/astronautstable', (req, res, next) => {
   connection.connect(function(err) {
     if (err) throw err;
-    //res.cookie('randomCookie', 'cookie', {expire: 360000 + Date.now()}); 
     const year = req.query.year;
     var sort = req.query.orderby;
     const test = [sort];
@@ -181,25 +177,5 @@ router.post('/addastronaut', (req, res, next) => {
   );
   res.redirect('/astronautstable');
 })
-
-/*router.post('/astronautstable/filter', (req, res, next) => {
-  var year = req.body.year;
-  res.redirect('/astronautstable/' + year);
-})*/
-
-/*router.get('/exchange', async (req, res, next) => {
-  //var dollars = req.params.dollars;
-  const result = await currencyAPI();
-  const usd = result.rates.USD;
-  //res.send('helllooooo');
-  res.render('exchange', {output: req.params.dollars, USD:usd});
-});
-
-/*router.get('/exchange/:dollars', async (req, res, next) => {
-  const result = await currencyAPI();
-  const usd = result.rates.USD;
-  //res.send("1112312321");
-  res.render('exchange', {output: req.params.dollars, USD: usd});
-});*/
 
 module.exports = router;
