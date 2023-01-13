@@ -3,15 +3,14 @@ extends layout
 block content 
     h1 Exchange € to $
         form(action= '/exchange/submit', method= 'POST') 
-                .col-7
+            .col-7
                 | €
                 input.form-control(type='number', name='dollars', value='')
-            
                 input.btn.btn-primary(type= 'submit', value= 'Exchange')
      - var exchanged = output * USD
      - var modifiedExchange = parseFloat(exchanged).toFixed(2);
-    //h1 exchanged: #{exchanged}
     h1
-        | $
-        input.form-control(type='number', value='#{modifiedExchange}' , readonly=true)
-        a.btn(href= "/") Back To Main Page
+        .col-7
+            | $
+            input.form-control(type='number', value='#{modifiedExchange}' , readonly=true)
+            a.btn(href= "/") Back To Main Page
