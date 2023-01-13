@@ -7,6 +7,7 @@ const mysql = require('mysql2');
 const isAuth = require('../auth/userauth');
 
 
+
 const connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
@@ -69,7 +70,7 @@ const valuesInObj = Object.values(daysObj);
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.render('index', { title: 'My First Express Website' });
 });
 
 router.get('/test', (req, res, next) => {
@@ -117,21 +118,41 @@ router.get('/astronauts', (req, res, next) => {
 router.get('/astronautstable', (req, res, next) => {
   connection.connect(function(err) {
     if (err) throw err;
-    res.cookie('randomCookie', 'cookie', {expire: 360000 + Date.now()}); 
+    //res.cookie('randomCookie', 'cookie', {expire: 360000 + Date.now()}); 
     const year = req.query.year;
+    var sort = req.query.orderby;
+    const test = [sort];
+  
+    if (sort == "ID") {
+      sort = "idastronauts"
+    }
 
     const querySucceded = (err, result, fields) => {
       res.render("astronautstable", {fullInfo: result});
     };
 
-    if (year != undefined){
+    if (sort && !year){
+      connection.query("SELECT * FROM astronauts ORDER BY ??",
+      [sort], 
+      querySucceded);
+    } else if (year && !sort) {
+      connection.query("select * from astronauts where year = ?",
+      [year], 
+      querySucceded);
+    }
+    else {
+      connection.query("select * from astronauts",
+      querySucceded);
+    }
+
+    /*if (year != undefined){
       connection.query("select * from astronauts where year = ?",
       [year], 
       querySucceded);
     } else {
       connection.query("select * from astronauts",
       querySucceded);
-    }
+    }*/
   });
 });
 

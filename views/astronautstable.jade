@@ -12,7 +12,8 @@ block content
         thead.bg-primary
             tr
                 -for(let i = 0; i < headers.length; i++){
-                    td.bg-primary= headers[i]
+                    td.bg-primary
+                        a.text-light(href="/astronautstable?orderby="+headers[i])=headers[i]
                 -}
         tbody 
             each val in fullInfo 
